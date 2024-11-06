@@ -1,13 +1,5 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+
 
 namespace DataGridView
 {
@@ -19,11 +11,22 @@ namespace DataGridView
         public MainWindow()
         {
             InitializeComponent();
-        }
+            Product Dildo = new Product();
+            Dildo.SKU = "69";
+            Dildo.Name = "Dildo monstruo";
+            Dildo.Price = "6699";
+            Dildo.Stock = "12";
 
-        private void DataGridXAML_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            DataGridXAML.Items.Add(Dildo);
+        }
+        public class Product
         {
+           public string SKU {  get; set; }
 
+            public string Name { get; set; }
+            public string Price {  get; set; }
+            public String Stock {  get; set; }
         }
+       
     }
 }

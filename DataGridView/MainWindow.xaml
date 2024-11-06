@@ -5,14 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataGridView"
         mc:Ignorable="d"
-        Title="DataGridExcercise" Height="650" Width="800">
+        Title="DataGrid Excercise" Height="650" Width="800" Background="Gray">
     <Grid>
-        <DataGrid Margin="10,160,10,10" Name="DataGridXAML" SelectionChanged="DataGridXAML_SelectionChanged">
+        <DataGrid Margin="10,160,10,10" Name="DataGridXAML">
+            <DataGrid.Resources>
+                <Style  TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="SKU"/>
-                <DataGridTextColumn Header="Product Name"/>
-                <DataGridTextColumn Header="Price"/>
-                <DataGridTextColumn Header="Stock"/>
+                <DataGridTextColumn Header="SKU" Binding="{Binding SKU}" Width="200"/>
+                <DataGridTextColumn Header="Product Name" Binding="{Binding Name}" Width="200"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="200"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="*"/>
 
 
             </DataGrid.Columns>
