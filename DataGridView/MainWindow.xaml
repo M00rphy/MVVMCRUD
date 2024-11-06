@@ -1,0 +1,22 @@
+﻿<Window x:Class="DataGridView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataGridView"
+        mc:Ignorable="d"
+        Title="DataGridExcercise" Height="650" Width="800">
+    <Grid>
+        <DataGrid Margin="10,160,10,10" Name="DataGridXAML" SelectionChanged="DataGridXAML_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SKU"/>
+                <DataGridTextColumn Header="Product Name"/>
+                <DataGridTextColumn Header="Price"/>
+                <DataGridTextColumn Header="Stock"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
