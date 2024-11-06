@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DataGrid Excercise" Height="650" Width="800" Background="Gray">
     <Grid>
-        <DataGrid Margin="10,160,10,10" Name="DataGridXAML">
+        <DataGrid Margin="10,10,10,287" Name="DataGridXAML">
             <DataGrid.Resources>
                 <Style  TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="AliceBlue"/>
@@ -26,6 +26,18 @@
 
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Add New Product" Name="NewProd" HorizontalAlignment="Left" Margin="341,509,0,0" VerticalAlignment="Top" Click="NewProd_Click"/>
+        <Label Content="SKU" HorizontalAlignment="Left" Margin="62,384,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="SKUTB" HorizontalAlignment="Left" Margin="62,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+
+        <Label Content="Name" HorizontalAlignment="Left" Margin="62,439,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="NameTB" HorizontalAlignment="Left" Margin="62,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+
+        <Label Content="Price" HorizontalAlignment="Left" Margin="526,389,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="PriceTB" HorizontalAlignment="Left" Margin="526,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+
+        <Label Content="Stock" HorizontalAlignment="Left" Margin="526,438,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="StockTB" HorizontalAlignment="Left" Margin="526,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
 
     </Grid>
 </Window>

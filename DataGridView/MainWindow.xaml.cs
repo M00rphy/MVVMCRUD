@@ -27,6 +27,16 @@ namespace DataGridView
             public string Price {  get; set; }
             public String Stock {  get; set; }
         }
-       
+
+        private void NewProd_Click(object sender, RoutedEventArgs e)
+        {
+            Product tempProduct = new Product();
+            tempProduct.SKU = SKUTB.Text;
+            tempProduct.Name = NameTB.Text;
+            tempProduct.Price = PriceTB.Text;
+            tempProduct.Stock = StockTB.Text;
+
+            DataGridXAML.Items.Add(tempProduct);
+        }
     }
 }
