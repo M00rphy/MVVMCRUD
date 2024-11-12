@@ -1,8 +1,8 @@
-﻿<Application x:Class="DataGridView.App"
+﻿<Application x:Class="DataGridCRUD.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:DataGridView"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:DataGridCRUD"
+             StartupUri="View/MainPage.xaml">
     <Application.Resources>
          
     </Application.Resources>
