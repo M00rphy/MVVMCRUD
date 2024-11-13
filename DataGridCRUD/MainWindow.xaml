@@ -3,10 +3,44 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DataGridCRUD"
-        mc:Ignorable="d"
-        Title="DataGrid Excercise" Height="650" Width="800" Background="Gray">
+        Title="DataGrid Exercise" Height="650" Width="800" Background="Gray">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type DataGridColumnHeader}">
+                <Setter Property="Background" Value="AliceBlue"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style>
+        </Grid.Resources>
 
+        <!-- ListView to display Product data -->
+        <ListView Name="ProductGrid" Margin="0,1,10,230" ItemsSource="{Binding Products}">
+            <ListView.View>
+                <GridView x:Name="grdTest">
+                    <GridViewColumn Header="SKU" DisplayMemberBinding="{Binding SKU}" Width="auto"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" Width="auto"/>
+                    <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding Stock}" Width="auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Additional UI Elements (TextBoxes and Buttons) -->
+        <Label Content="SKU" HorizontalAlignment="Left" Margin="62,384,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="SKUTB" HorizontalAlignment="Left" Margin="62,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+
+        <Label Content="Name" HorizontalAlignment="Left" Margin="62,439,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="NameTB" HorizontalAlignment="Left" Margin="62,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+
+        <Label Content="Price" HorizontalAlignment="Left" Margin="526,389,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="PriceTB" HorizontalAlignment="Left" Margin="526,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+
+        <Label Content="Stock" HorizontalAlignment="Left" Margin="526,438,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="StockTB" HorizontalAlignment="Left" Margin="526,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+
+        <Button Content="Add New Product" Name="NewProd" HorizontalAlignment="Left" Margin="341,509,0,0" VerticalAlignment="Top"/>
+        <Button Content="Update Product" HorizontalAlignment="Left" Margin="341,544,0,0" VerticalAlignment="Top" Width="98" Name="UpdProd"/>
+        <Button Content="Delete Product" HorizontalAlignment="Left" Margin="341,578,0,0" VerticalAlignment="Top" Width="98" Name="DelProd"/>
     </Grid>
 </Window>

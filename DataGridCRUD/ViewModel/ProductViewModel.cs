@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 
 
-class ProductViewModel
+public class ProductViewModel
 {
     private IList<Product> productsList;
 

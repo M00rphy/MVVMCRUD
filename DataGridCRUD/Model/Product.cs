@@ -1,85 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
-
+﻿using System.ComponentModel;
 
 public class Product : INotifyPropertyChanged
 {
-
-    public string sku;
-    public string name;
-    public string price;
-    public string stock;
+    private string sku;
+    private string name;
+    private string price;
+    private string stock;
 
     public string SKU
     {
-        get
-        {
-            return sku;
-        }
-        set
-        {
-            sku = value;
-            OnPropertyChanged("sku");
-        }
+        get => sku;
+        set { sku = value; OnPropertyChanged(nameof(SKU)); }
     }
 
     public string Name
     {
-        get
-        {
-            return name;
-        }
-        set
-        {
-            name = value;
-            OnPropertyChanged("name");
-        }
+        get => name;
+        set { name = value; OnPropertyChanged(nameof(Name)); }
     }
 
     public string Price
     {
-        get
-        {
-            return price;
-        }
-        set
-        {
-            price = value;
-            OnPropertyChanged("price");
-        }
+        get => price;
+        set { price = value; OnPropertyChanged(nameof(Price)); }
     }
 
     public string Stock
     {
-        get
-        {
-            return stock;
-        }
-        set
-        {
-            stock = value;
-            OnPropertyChanged("stock");
-        }
+        get => stock;
+        set { stock = value; OnPropertyChanged(nameof(Stock)); }
     }
-
-    #region INotifyPropertyChanged Members
 
     public event PropertyChangedEventHandler PropertyChanged;
-
-    private void OnPropertyChanged(string propertyName)
+    protected void OnPropertyChanged(string propertyName)
     {
-        if (PropertyChanged != null)
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-
-    #endregion
 }
+
 
