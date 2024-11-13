@@ -22,10 +22,10 @@
         <ListView Name="ProductGrid" Margin="0,1,10,230" ItemsSource="{Binding Product}">
             <ListView.View>
                 <GridView x:Name="grdTest">
-                    <GridViewColumn Header="SKU" DisplayMemberBinding="{Binding SKU}" Width="*"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="*"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" Width="*"/>
-                    <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding Stock}" Width="*"/>
+                    <GridViewColumn Header="SKU" DisplayMemberBinding="{Binding SKU}" Width="auto"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" Width="auto"/>
+                    <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding Stock}" Width="auto"/>
                 </GridView>
             </ListView.View>
         </ListView>
