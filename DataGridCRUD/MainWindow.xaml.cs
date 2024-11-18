@@ -27,7 +27,27 @@ namespace DataGridCRUD
 
         private void DelProd_Click(object sender, RoutedEventArgs e)
         {
+            var viewModel = DataContext as ProductViewModel;
 
+            if (viewModel?.SelectedProduct != null)
+            {
+                // Confirm the delete action
+                var result = MessageBox.Show(
+                    $"Are you sure you want to delete the product '{viewModel.SelectedProduct.Name}'?",
+                    "Confirm Delete",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    viewModel.Products.Remove(viewModel.SelectedProduct); // Remove from ObservableCollection
+                    MessageBox.Show("Product deleted successfully!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to delete.");
+            }
         }
 
         private void UpdBtn_Click(object sender, RoutedEventArgs e)
