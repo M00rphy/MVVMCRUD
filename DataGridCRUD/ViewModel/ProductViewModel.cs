@@ -15,9 +15,9 @@ public class ProductViewModel
     public ProductViewModel()
     {
         productsList = new List<Product> {
-            new Product { SKU = "1", Name = "Dildo Monstruo", Price = "666", Stock = "Delhi"},
-            new Product { SKU = "1", Name = "Dildo Monstruo", Price = "666", Stock = "Delhi"},
-            new Product { SKU = "1", Name = "Dildo Monstruo", Price = "666", Stock = "Delhi"},
+            new Product { SKU = "1", Name = "Dog Toy", Price = "6", Stock = "6"},
+            new Product { SKU = "2", Name = "CBD Chuwables", Price = "30", Stock = "25"},
+            new Product { SKU = "3", Name = "Maskking", Price = "25", Stock = "55"},
 
         };
     }
