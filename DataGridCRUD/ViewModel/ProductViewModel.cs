@@ -6,27 +6,23 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 
 public class ProductViewModel
 {
-    private IList<Product> productsList;
+    public ObservableCollection<Product> Products { get; set; }
 
     public ProductViewModel()
     {
-        productsList = new List<Product> {
+        Products = new ObservableCollection<Product>
+        {
             new Product { SKU = "1", Name = "Dog Toy", Price = "6", Stock = "6"},
             new Product { SKU = "2", Name = "CBD Chuwables", Price = "30", Stock = "25"},
             new Product { SKU = "3", Name = "Maskking", Price = "25", Stock = "55"},
-
         };
     }
 
-    public IList<Product> Products
-    {
-        get { return productsList; }
-        set { productsList = value; }
-    }
 
     private ICommand mUpdater;
     private ICommand UpdateCommand

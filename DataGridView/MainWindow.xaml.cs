@@ -51,6 +51,7 @@ namespace DataGridView
             tempProduct.Stock = StockTB.Text;
 
             DataGridXAML.Items.Add(tempProduct);
+
         }
     }
 }
