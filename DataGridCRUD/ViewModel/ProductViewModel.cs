@@ -11,6 +11,8 @@ using System.Collections.ObjectModel;
 
 public class ProductViewModel
 {
+
+    //Replace IList<Product> with ObservableCollection<Product> to auto-update the UI
     public ObservableCollection<Product> Products { get; set; }
 
     public ProductViewModel()
