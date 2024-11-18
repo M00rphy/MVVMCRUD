@@ -31,16 +31,16 @@
 
 
         <Label Content="SKU" HorizontalAlignment="Left" Margin="62,384,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="SKUTB" HorizontalAlignment="Left" Margin="62,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="SKUTB" HorizontalAlignment="Left" Margin="62,415,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Text="{Binding SelectedProduct.SKU, Mode=TwoWay}"/>
 
         <Label Content="Name" HorizontalAlignment="Left" Margin="62,439,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="NameTB" HorizontalAlignment="Left" Margin="62,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="NameTB" HorizontalAlignment="Left" Margin="62,469,0,0" TextWrapping="Wrap" Text="{Binding SelectedProduct.Name, Mode=TwoWay}" VerticalAlignment="Top" Width="194"/>
 
         <Label Content="Price" HorizontalAlignment="Left" Margin="526,389,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="PriceTB" HorizontalAlignment="Left" Margin="526,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="PriceTB" HorizontalAlignment="Left" Margin="526,415,0,0" TextWrapping="Wrap" Text="{Binding SelectedProdutc.Price, Mode=TwoWay}" VerticalAlignment="Top" Width="194"/>
 
         <Label Content="Stock" HorizontalAlignment="Left" Margin="526,438,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="StockTB" HorizontalAlignment="Left" Margin="526,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="StockTB" HorizontalAlignment="Left" Margin="526,469,0,0" TextWrapping="Wrap" Text="{Binding SelectedProduc.Stock, Mode=TwoWay}" VerticalAlignment="Top" Width="194"/>
        
     </Grid>
 
