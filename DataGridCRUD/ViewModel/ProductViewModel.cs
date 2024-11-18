@@ -15,6 +15,18 @@ public class ProductViewModel
     //Replace IList<Product> with ObservableCollection<Product> to auto-update the UI
     public ObservableCollection<Product> Products { get; set; }
 
+    private Product selectedProduct;
+
+    public Product SelectedProduct
+    {
+        get => selectedProduct;
+        set
+        {
+            selectedProduct = value;
+            OnPropertyChanged(nameof(SelectedProduct));
+        }
+    }
+
     public ProductViewModel()
     {
         Products = new ObservableCollection<Product>
@@ -37,6 +49,13 @@ public class ProductViewModel
 
         }
         set { mUpdater = value; }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     private class Updater : ICommand

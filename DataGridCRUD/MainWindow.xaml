@@ -8,7 +8,7 @@
 
 
     <Grid>
-        <DataGrid Margin="10,10,10,287" Name="DataGridXAML" ItemsSource="{Binding Products}" AutoGenerateColumns="False">
+        <DataGrid Margin="10,10,10,287" Name="DataGridXAML" ItemsSource="{Binding Products}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="AliceBlue"/>
@@ -26,6 +26,10 @@
         </DataGrid>
 
         <Button Content="Add New Product" Name="NewProd" HorizontalAlignment="Left" Margin="341,509,0,0" VerticalAlignment="Top" Click="NewProd_Click"/>
+        <Button x:Name="UpdBtn" Content="Update Products" HorizontalAlignment="Left" Margin="341,534,0,0" VerticalAlignment="Top" Width="98" Click="UpdBtn_Click"/>
+        <Button x:Name="DelProd" Content="Delete Product" HorizontalAlignment="Left" Margin="341,559,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.858,-1.501" Width="98" Click="DelProd_Click"/>
+
+
         <Label Content="SKU" HorizontalAlignment="Left" Margin="62,384,0,0" VerticalAlignment="Top"/>
         <TextBox Name="SKUTB" HorizontalAlignment="Left" Margin="62,415,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
 
@@ -37,7 +41,7 @@
 
         <Label Content="Stock" HorizontalAlignment="Left" Margin="526,438,0,0" VerticalAlignment="Top"/>
         <TextBox Name="StockTB" HorizontalAlignment="Left" Margin="526,469,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-
+       
     </Grid>
 
 

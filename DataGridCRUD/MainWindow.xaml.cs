@@ -24,5 +24,25 @@ namespace DataGridCRUD
             var viewModel = DataContext as ProductViewModel;
             viewModel?.Products.Add(newProduct);
         }
+
+        private void DelProd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as ProductViewModel;
+
+            if (viewModel?.SelectedProduct != null)
+            {
+                // The properties of SelectedProduct are already updated via TwoWay binding
+                MessageBox.Show("Product updated successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to update.");
+            }
+        }
     }
 }
