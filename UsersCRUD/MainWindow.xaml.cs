@@ -25,8 +25,9 @@ namespace UsersCRUD
         {
             if (uEmail.Text == "admin@mail.com" && uPass.Text == "admin")
             {
-                UserControlWindow UserC = new UserControlWindow();
                 this.Hide();
+                UserControlWindow UserC = new UserControlWindow();
+                
                 UserC.Show();
             }
             else
