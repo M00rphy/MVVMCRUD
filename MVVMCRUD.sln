@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridCRUD", "DataGridCRUD\DataGridCRUD.csproj", "{608A2241-F3D1-4935-99BF-496E185C694E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersCRUD", "UsersCRUD\UsersCRUD.csproj", "{EC72B913-5A49-49A3-AF13-584377A1FD2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{608A2241-F3D1-4935-99BF-496E185C694E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{608A2241-F3D1-4935-99BF-496E185C694E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{608A2241-F3D1-4935-99BF-496E185C694E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC72B913-5A49-49A3-AF13-584377A1FD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC72B913-5A49-49A3-AF13-584377A1FD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC72B913-5A49-49A3-AF13-584377A1FD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC72B913-5A49-49A3-AF13-584377A1FD2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
