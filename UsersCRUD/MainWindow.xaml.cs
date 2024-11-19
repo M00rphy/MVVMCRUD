@@ -20,5 +20,19 @@ namespace UsersCRUD
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (uEmail.Text == "admin@mail.com" && uPass.Text == "admin")
+            {
+                UserControlWindow UserC = new UserControlWindow();
+                this.Hide();
+                UserC.Show();
+            }
+            else
+            {
+                MessageBox.Show("Couldn't find user!");
+            }
+        }
     }
 }
