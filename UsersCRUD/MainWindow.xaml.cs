@@ -27,7 +27,7 @@ namespace UsersCRUD
             {
                 this.Hide();
                 UserControlWindow UserC = new UserControlWindow();
-                
+               
                 UserC.Show();
             }
             else
