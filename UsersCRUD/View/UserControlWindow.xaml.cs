@@ -64,5 +64,12 @@ namespace UsersCRUD
                 MessageBox.Show("Please select a User to delete.");
             }
         }
+
+        private void logoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            MainWindow MainW = new MainWindow();
+            MainW.Show();
+        }
     }
 }

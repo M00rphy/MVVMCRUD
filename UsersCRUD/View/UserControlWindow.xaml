@@ -15,8 +15,9 @@
         <TextBox Text="{Binding SelectedUser.Email, Mode=TwoWay}" Name="EmailIn" Margin="515,49,165,355" Width="120" Height="30"/>
         <TextBox Text="{Binding SelectedUser.Password, Mode=TwoWay}" Name="PasswordIn" Margin="515,100,165,304" Width="120" Height="30"/>
 
-        <Button Content="Save" HorizontalAlignment="Left" Margin="738,59,0,0" VerticalAlignment="Top" Click="saveBtn_Click" Name="saveBtn"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="731,100,0,0" VerticalAlignment="Top" Click="updBtn_Click" Name="updBtn" RenderTransformOrigin="0.377,1.803"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="733,125,0,0" VerticalAlignment="Top" Click="delBtn_Click" Name="delBtn" RenderTransformOrigin="0.377,1.803"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="738,49,0,0" VerticalAlignment="Top" Click="saveBtn_Click" Name="saveBtn"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="733,79,0,0" VerticalAlignment="Top" Click="updBtn_Click" Name="updBtn" RenderTransformOrigin="0.377,1.803"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="735,110,0,0" VerticalAlignment="Top" Click="delBtn_Click" Name="delBtn" RenderTransformOrigin="0.377,1.803"/>
+        <Button Content="Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="logoutBtn_Click" x:Name="logoutBtn" RenderTransformOrigin="0.377,1.803"/>
     </Grid>
 </Window>
