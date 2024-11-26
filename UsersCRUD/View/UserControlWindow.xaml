@@ -10,11 +10,11 @@
         <!-- Bind DataGrid to the Users collection in ViewModel -->
         <DataGrid ItemsSource="{Binding Users}" Margin="0,180,0,0" SelectedItem="{Binding SelectedUser}"/>
 
-        <TextBox Text="{Binding SelectedUser.Name}" Margin="28,49,652,355" Width="120" Height="30"/>
-        <TextBox Text="{Binding SelectedUser.LastName}" Margin="28,100,652,304" Width="120" Height="30"/>
-        <TextBox Text="{Binding SelectedUser.Email}" Margin="515,49,165,355" Width="120" Height="30"/>
-        <TextBox Text="{Binding SelectedUser.Password}" Margin="515,100,165,304" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.Name}" Name="NameIn"  Margin="28,49,652,355" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.LastName}" Name="LastNameIn" Margin="28,100,652,304" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.Email}" Name="EmailIn" Margin="515,49,165,355" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.Password}" Name="PasswordIn" Margin="515,100,165,304" Width="120" Height="30"/>
 
-        <Button Content="Save" HorizontalAlignment="Left" Margin="742,90,0,0" VerticalAlignment="Top"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="742,90,0,0" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>
