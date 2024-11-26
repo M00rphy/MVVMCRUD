@@ -17,7 +17,7 @@ namespace UsersCRUD
             this.DataContext = new UserViewModel();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
             var newUser = new User
             {
@@ -29,6 +29,40 @@ namespace UsersCRUD
 
             var viewModel = DataContext as UserViewModel;
             viewModel?.Users.Add(newUser);
+        }
+
+        private void updBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as UserViewModel;
+
+            if (viewModel?.SelectedUser != null)
+            {
+                MessageBox.Show("User updated correctly");
+            }
+            else
+            {
+                MessageBox.Show("User not found");
+            }
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var ViewModel = DataContext as UserViewModel;
+            if (ViewModel?.SelectedUser != null)
+            {
+                var res = MessageBox.Show($"Are you sure you want to delete '{ViewModel.SelectedUser.Name}'?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (res == MessageBoxResult.Yes)
+                {
+                    ViewModel.Users.Remove(ViewModel.SelectedUser);
+                    MessageBox.Show("Success");
+                } else
+                {
+                    MessageBox.Show("OK");
+                }
+            } else
+            {
+                MessageBox.Show("Please select a User to delete.");
+            }
         }
     }
 }

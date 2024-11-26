@@ -10,11 +10,13 @@
         <!-- Bind DataGrid to the Users collection in ViewModel -->
         <DataGrid ItemsSource="{Binding Users}" Margin="0,180,0,0" SelectedItem="{Binding SelectedUser}"/>
 
-        <TextBox Text="{Binding SelectedUser.Name}" Name="NameIn"  Margin="28,49,652,355" Width="120" Height="30"/>
-        <TextBox Text="{Binding SelectedUser.LastName}" Name="LastNameIn" Margin="28,100,652,304" Width="120" Height="30"/>
-        <TextBox Text="{Binding SelectedUser.Email}" Name="EmailIn" Margin="515,49,165,355" Width="120" Height="30"/>
-        <TextBox Text="{Binding SelectedUser.Password}" Name="PasswordIn" Margin="515,100,165,304" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.Name, Mode=TwoWay}" Name="NameIn"  Margin="28,49,652,355" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.LastName,Mode=TwoWay}" Name="LastNameIn" Margin="28,100,652,304" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.Email, Mode=TwoWay}" Name="EmailIn" Margin="515,49,165,355" Width="120" Height="30"/>
+        <TextBox Text="{Binding SelectedUser.Password, Mode=TwoWay}" Name="PasswordIn" Margin="515,100,165,304" Width="120" Height="30"/>
 
-        <Button Content="Save" HorizontalAlignment="Left" Margin="742,90,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="738,59,0,0" VerticalAlignment="Top" Click="saveBtn_Click" Name="saveBtn"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="731,100,0,0" VerticalAlignment="Top" Click="updBtn_Click" Name="updBtn" RenderTransformOrigin="0.377,1.803"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="733,125,0,0" VerticalAlignment="Top" Click="delBtn_Click" Name="delBtn" RenderTransformOrigin="0.377,1.803"/>
     </Grid>
 </Window>
