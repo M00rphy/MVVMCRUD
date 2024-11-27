@@ -1,6 +1,7 @@
 ﻿using Assimp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace UsersCRUD.SharpGLTests
 {
@@ -28,27 +30,39 @@ namespace UsersCRUD.SharpGLTests
 
         private void LoadModel_Click(object sender, RoutedEventArgs e)
         {
-            string modelPath = "path_to_your_model/model.gltf";
 
-            // Load model using Assimp
+            //string modelPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\3D\\scene.gltf");
+            //C:\Users\lx\source\repos\MVVMCRUD\UsersCRUD\Assets\3D\xiaomi_mi_power_bank_3.glb
+
+
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            string modelPath = Path.Combine(projectDirectory, "Assets", "3D", "test.gltf");
+
+            if (!File.Exists(modelPath))
+            {
+                MessageBox.Show($"File not found: {modelPath}");
+                return;
+            }
+
+
+            if (!System.IO.File.Exists(modelPath))
+            {
+                MessageBox.Show($"File not found: {modelPath}");
+                return;
+            }
+
             var importer = new AssimpContext();
             try
             {
                 var scene = importer.ImportFile(modelPath, PostProcessPreset.TargetRealTimeMaximumQuality);
-                Console.WriteLine($"Model loaded with {scene.MeshCount} meshes.");
+                MessageBox.Show($"Model loaded with {scene.MeshCount} meshes.");
 
                 foreach (var mesh in scene.Meshes)
                 {
-                    // Convert Assimp mesh to WPF mesh
                     var geometry = ConvertToMeshGeometry(mesh);
-
-                    // Create a material for the model
                     var material = new DiffuseMaterial(new SolidColorBrush(Colors.SkyBlue));
-
-                    // Create a 3D model
                     var model = new GeometryModel3D(geometry, material);
-
-                    // Add the model to the viewport
                     var modelVisual = new ModelVisual3D { Content = model };
                     MainViewport.Children.Add(modelVisual);
                 }
@@ -62,6 +76,7 @@ namespace UsersCRUD.SharpGLTests
                 importer.Dispose();
             }
         }
+
 
         private MeshGeometry3D ConvertToMeshGeometry(Mesh mesh)
         {
