@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SharpGL" Version="3.1.1" />
+    <Folder Include="Assets\3D\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\3D\" />
+    <PackageReference Include="AssimpNet" Version="4.1.0" />
   </ItemGroup>
 
 </Project>
