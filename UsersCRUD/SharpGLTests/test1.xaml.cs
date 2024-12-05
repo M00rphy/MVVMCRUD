@@ -1,28 +1,19 @@
-﻿using Assimp;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
-using System.Windows.Shapes;
-using Path = System.IO.Path;
+using HelixToolkit.Wpf.SharpDX;
+using HelixToolkit.SharpDX.Core;
+using HelixToolkit.SharpDX.Core.Model.Scene;
+using HelixToolkit.SharpDX.Core.Loader;
+using SharpDX;
+using HelixToolkit.Wpf;
 
-namespace UsersCRUD.SharpGLTests
+namespace UsersCRUD
 {
-    /// <summary>
-    /// Interaction logic for test1.xaml
-    /// </summary>
     public partial class test1 : Window
     {
+        private SceneNode modelScene;
+
         public test1()
         {
             InitializeComponent();
@@ -30,76 +21,47 @@ namespace UsersCRUD.SharpGLTests
 
         private void LoadModel_Click(object sender, RoutedEventArgs e)
         {
-
-            //string modelPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\3D\\scene.gltf");
-            //C:\Users\lx\source\repos\MVVMCRUD\UsersCRUD\Assets\3D\xiaomi_mi_power_bank_3.glb
-
-
+            // Model path
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             string modelPath = Path.Combine(projectDirectory, "Assets", "3D", "test.gltf");
 
-            if (!File.Exists(modelPath))
-            {
-                MessageBox.Show($"File not found: {modelPath}");
-                return;
-            }
-
-
-            if (!System.IO.File.Exists(modelPath))
-            {
-                MessageBox.Show($"File not found: {modelPath}");
-                return;
-            }
-
-            var importer = new AssimpContext();
             try
             {
-                var scene = importer.ImportFile(modelPath, PostProcessPreset.TargetRealTimeMaximumQuality);
-                MessageBox.Show($"Model loaded with {scene.MeshCount} meshes.");
+                // Load the GLTF model using GLTFLoader
+                var loader = new Importer();
+                var scene = loader.Load(modelPath);
 
-                foreach (var mesh in scene.Meshes)
+                // Attach the model to the viewport
+                ModelContainer.Items.Clear();
+                if (scene != null)
                 {
-                    var geometry = ConvertToMeshGeometry(mesh);
-                    var material = new DiffuseMaterial(new SolidColorBrush(Colors.SkyBlue));
-                    var model = new GeometryModel3D(geometry, material);
-                    var modelVisual = new ModelVisual3D { Content = model };
-                    MainViewport.Children.Add(modelVisual);
+                    foreach (var node in scene.Root.Traverse())
+                    {
+                        if (node is MeshNode meshNode)
+                        {
+                            ModelContainer.Items.Add(meshNode);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Failed to load model: Scene is null.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load model: {ex.Message}");
-            }
-            finally
-            {
-                importer.Dispose();
+                MessageBox.Show($"Error loading model: {ex.Message}");
             }
         }
 
-
-        private MeshGeometry3D ConvertToMeshGeometry(Mesh mesh)
+        private void RotateCamera_Click(object sender, RoutedEventArgs e)
         {
-            var geometry = new MeshGeometry3D();
-
-            // Add vertices
-            foreach (var vertex in mesh.Vertices)
+            if (helixViewport.Camera is PerspectiveCamera camera)
             {
-                geometry.Positions.Add(new Point3D(vertex.X, vertex.Y, vertex.Z));
+                camera.Position = new System.Windows.Media.Media3D.Point3D(
+                    camera.Position.X + 5, camera.Position.Y, camera.Position.Z);
             }
-
-            // Add triangles
-            foreach (var face in mesh.Faces)
-            {
-                if (face.IndexCount == 3) // Ensure the face is a triangle
-                {
-                    geometry.TriangleIndices.Add(face.Indices[0]);
-                    geometry.TriangleIndices.Add(face.Indices[1]);
-                    geometry.TriangleIndices.Add(face.Indices[2]);
-                }
-            }
-
-            return geometry;
         }
     }
 }

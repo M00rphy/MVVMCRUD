@@ -1,29 +1,28 @@
-﻿<Window x:Class="UsersCRUD.SharpGLTests.test1"
+﻿<Window x:Class="UsersCRUD.test1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UsersCRUD.SharpGLTests"
+        xmlns:hx="http://helix-toolkit.org/wpf"
+        xmlns:hxsharp="http://helix-toolkit.org/wpfsharpdx"
         mc:Ignorable="d"
-        Title="test1" Height="450" Width="800">
+        Title="3D Viewer" Height="450" Width="800">
+
     <Grid>
-        <!-- Viewport for rendering the 3D model -->
-        <Viewport3D Name="MainViewport" ClipToBounds="True">
-            <!-- Camera -->
-            <Viewport3D.Camera>
-                <PerspectiveCamera Position="0,0,5" LookDirection="0,0,-1" UpDirection="0,1,0" FieldOfView="45" />
-            </Viewport3D.Camera>
+        <hxsharp:HelixViewport3DX Name="helixViewport" Background="White">
+            <!-- Lighting -->
+            <hxsharp:DirectionalLight3D Direction="-1,-1,-1" Color="White" />
+            <hxsharp:AmbientLight3D Color="Gray" />
 
-            <!-- Lights -->
-            <ModelVisual3D>
-                <ModelVisual3D.Content>
-                    <AmbientLight Color="White" />
-                </ModelVisual3D.Content>
-            </ModelVisual3D>
-        </Viewport3D>
+            <!-- Placeholder for 3D Model -->
+            <hxsharp:GroupModel3D x:Name="ModelContainer" />
+        </hxsharp:HelixViewport3DX>
 
-        <!-- Button to load the model -->
-        <Button Content="Load Model" Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"
-                Click="LoadModel_Click" />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
+            <Button Content="Load Model" Click="LoadModel_Click" />
+            <Button Content="Rotate Camera" Click="RotateCamera_Click" />
+        </StackPanel>
     </Grid>
 </Window>
+
+

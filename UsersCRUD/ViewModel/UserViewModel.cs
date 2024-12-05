@@ -1,74 +1,104 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using UsersCRUD.Model;
+using UsersCRUD.Repositories;
 
-
-class UserViewModel
+namespace UsersCRUD.ViewModel 
 {
-    public ObservableCollection<User> Users { get; set; }
-
-    private User selectedUser;
-
-    public User SelectedUser
+    public class UserViewModel : INotifyPropertyChanged
     {
-        get => selectedUser;
-        set
+        private readonly UserRepository _userRepository; // For database operations
+        private User _selectedUser; // Selected user for UI interactions
+
+        public ObservableCollection<User> Users { get; set; } // Bindable user list
+        public User SelectedUser
         {
-            selectedUser = value;
-            OnPropertyChanged(nameof(SelectedUser));
-        }
-    }
-
-
-    public UserViewModel()
-    {
-        Users = new ObservableCollection<User>
-        {
-            new User { Name = "Pedro", LastName = "sola", Email = "pedrito.sola@tlaeriza.mx", Password = "123"},
-            new User { Name = "Pedro", LastName = "sola", Email = "pedrito.sola@tlaeriza.mx", Password = "123"},
-            new User { Name = "Pedro", LastName = "sola", Email = "pedrito.sola@tlaeriza.mx", Password = "123"},
-        };
-    }
-
-
-    private ICommand mUpdater;
-    private ICommand UpdateCommand
-    {
-        get
-        {
-            if (mUpdater == null)
-                mUpdater = new Updater();
-            return mUpdater;
-
-        }
-        set { mUpdater = value; }
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    private class Updater : ICommand
-    {
-        public bool CanExecute(object parameter)
-        {
-            return true;
+            get => _selectedUser;
+            set
+            {
+                _selectedUser = value;
+                OnPropertyChanged();
+            }
         }
 
-        public event EventHandler CanExecuteChanged;
+        // Commands for CRUD operations
+        public ICommand AddUserCommand { get; }
+        public ICommand UpdateUserCommand { get; }
+        public ICommand DeleteUserCommand { get; }
 
-        public void Execute(object parameter)
+        // Constructor
+        public UserViewModel()
         {
-            // Code implementation for execution
+            // Initialize database connection
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            string databasePath = Path.Combine(projectDirectory, "DB", "mvvmCRUDEx.db");
+
+            _userRepository = new UserRepository(databasePath);
+
+            // Load users from the database
+            Users = new ObservableCollection<User>(_userRepository.GetAllUsers());
+
+            // Initialize commands
+            AddUserCommand = new RelayCommand(AddUser);
+            UpdateUserCommand = new RelayCommand(UpdateUser, CanModifyUser);
+            DeleteUserCommand = new RelayCommand(DeleteUser, CanModifyUser);
+        }
+
+        // Command Methods
+        private void AddUser(object obj)
+        {
+            var newUser = new User
+            {
+                Name = "New",
+                LastName = "User",
+                Email = "new.user@example.com",
+                Password = "password123"
+            };
+
+            _userRepository.AddUser(newUser);
+            Users.Add(newUser); // Update UI
+        }
+
+        private void UpdateUser(object obj)
+        {
+            if (SelectedUser != null)
+            {
+                _userRepository.UpdateUser(SelectedUser);
+
+                // Refresh UI, if necessary
+                // Optional: Reload all users from DB
+                // Users.Clear();
+                // foreach (var user in _userRepository.GetAllUsers())
+                // {
+                //     Users.Add(user);
+                // }
+            }
+        }
+
+        private void DeleteUser(object obj)
+        {
+            if (SelectedUser != null)
+            {
+                _userRepository.DeleteUser(SelectedUser.Email);
+                Users.Remove(SelectedUser); // Update UI
+            }
+        }
+
+        private bool CanModifyUser(object obj)
+        {
+            return SelectedUser != null;
+        }
+
+        // INotifyPropertyChanged Implementation
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
